@@ -76,10 +76,10 @@ public function update($id, $data)
         $syncData = [];
 
         foreach ($data['skills'] as $skill) {
-            $syncData[$skill['id']] = [
-                'years_of_experience' => $skill['years_of_experience'] ?? 0
-            ];
-        }
+    $syncData[$skill['skill_id']] = [
+        'years_of_experience' => $skill['years_experience'] ?? 0
+    ];
+}
 
         $profile->skills()->sync($syncData);
     }

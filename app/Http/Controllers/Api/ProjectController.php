@@ -9,9 +9,10 @@ use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Models\Project;
 use App\Http\Resources\ProjectResource;
-
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class ProjectController extends Controller
 {
+    use AuthorizesRequests;
     protected $service;
 
     public function __construct(ProjectService $service)
@@ -47,17 +48,25 @@ class ProjectController extends Controller
     }
 
     public function update(UpdateProjectRequest $request, Project $project)
-    {
-        $this->authorize('update', $project);
+{
+    $user = auth()->user();
 
-        $project = $this->service->update($project, $request->validated());
-
-        return response()->json([
-            'success' => true,
-            'data' => new ProjectResource($project),
-            'message' => 'Project updated successfully'
-        ]);
+    if (!$user || $user->role !== 'client') {
+        return response()->json(['message' => 'Only clients allowed'], 403);
     }
+
+    if ($user->id !== $project->client_id) {
+        return response()->json(['message' => 'You are not the owner of this project'], 403);
+    }
+
+    $project = $this->service->update($project, $request->validated());
+
+    return response()->json([
+        'success' => true,
+        'data' => new ProjectResource($project),
+        'message' => 'Project updated successfully'
+    ]);
+}
 
     public function destroy(Project $project)
     {

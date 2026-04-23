@@ -40,21 +40,19 @@ public function isClosed($project): bool
         return $project->status === 'closed';
     }    
 
-    public function create($data)
+ public function create($data)
 {
     $user = auth()->user();
 
     if (!$user || $user->role !== 'client') {
-        return response()->json([
-            'message' => 'Only clients can create projects'
-        ], 403);
+        return null;
     }
 
     $data['client_id'] = $user->id;
 
     $project = Project::create($data);
 
-    if (isset($data['tags'])) {
+    if (!empty($data['tags'])) {
         $project->tags()->sync($data['tags']);
     }
 

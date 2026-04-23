@@ -1,0 +1,608 @@
+type: collection.insomnia.rest/5.0
+schema_version: "5.1"
+name: HireHub-project
+meta:
+  id: wrk_5ba1865118604d63b201803e29dbba5b
+  created: 1776938715200
+  modified: 1776938715200
+  description: ""
+collection:
+  - name: login api
+    meta:
+      id: fld_3ed03491271b4b4c9df2c145be8c3861
+      created: 1776939436639
+      modified: 1776939945080
+      sortKey: -1776939436640
+      description: ""
+    children:
+      - url: http://127.0.0.1:8000/api/login
+        name: client login
+        meta:
+          id: req_c3424e200058478492ab06dfce46a28f
+          created: 1776939969013
+          modified: 1776951779395
+          isPrivate: false
+          description: ""
+          sortKey: -1776939969013
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "email": "client@test.com",
+              "password": "123456"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://127.0.0.1:8000/api/login
+        name: freelancer login
+        meta:
+          id: req_554dd879e14543b2bf89fd25754ad6cb
+          created: 1776940097486
+          modified: 1776940186102
+          isPrivate: false
+          description: ""
+          sortKey: -1776940097486
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "email": "yara2freelancer@test.com",
+              "password": "123456"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://127.0.0.1:8000/api/login
+        name: client 2 login
+        meta:
+          id: req_102d88a43540488abb864486e379dbb9
+          created: 1776944248863
+          modified: 1776944315823
+          isPrivate: false
+          description: ""
+          sortKey: -1776944248863
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "email": "yara2Client@test.com",
+              "password": "123456"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: projects api
+    meta:
+      id: fld_8d9840ddbc5643dc93699734919cbcf0
+      created: 1776940228235
+      modified: 1776940298448
+      sortKey: -1776940228235
+      description: ""
+    children:
+      - url: http://127.0.0.1:8000/api/projects
+        name: projects open list
+        meta:
+          id: req_e0abc3b92ad1431e935a24e34d0fc0fd
+          created: 1776940235242
+          modified: 1776941792547
+          isPrivate: false
+          description: ""
+          sortKey: -1776940235242
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        authentication:
+          type: bearer
+          token: 2|gj8TGcHdXeFg0Ehr64gmTNCp4aG9EENs4ayXmIUw1baaa7044
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://127.0.0.1:8000/api/projects/2
+        name: details only projects 2
+        meta:
+          id: req_202605985a294e53a8b9fb4a23a993fd
+          created: 1776941667291
+          modified: 1776941853146
+          isPrivate: false
+          description: ""
+          sortKey: -1776941667291
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        authentication:
+          type: bearer
+          token: 2|gj8TGcHdXeFg0Ehr64gmTNCp4aG9EENs4ayXmIUw1baaa704
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://127.0.0.1:8000/api/projects/3
+        name: Update Project By Owner
+        meta:
+          id: req_e6c5ff379d414e3f9814167ef79f4e9a
+          created: 1776941862203
+          modified: 1776944176697
+          isPrivate: false
+          description: ""
+          sortKey: -1776941862203
+        method: PUT
+        body:
+          mimeType: application/json
+          text: >-
+            {
+            	"description": "This is a valid description with more than fifty characters to pass validation rules"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        authentication:
+          type: bearer
+          token: 5|NdkGWhblJayPF9OvQvtjL94zZFhsIOtLKiMxAj93db5b0b3e
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://127.0.0.1:8000/api/projects
+        name: new project
+        meta:
+          id: req_123d57efc6274643ab8806aca07d8a05
+          created: 1776944188997
+          modified: 1776945849784
+          isPrivate: false
+          description: ""
+          sortKey: -1776944188997
+        method: POST
+        body:
+          mimeType: application/json
+          text: >-
+            {
+            	"client_id":3,
+              "title": "Build E-commerce Website",
+              "description": "I need a full e-commerce website built using Laravel with cart, checkout, and admin dashboard. The project should be scalable and well structured.",
+              "budget_type": "fixed",
+              "budget_amount": 1500,
+            	"status":"open",
+              "deadline": "2026-06-01",
+              "attachments": [1, 2, 3]
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        authentication:
+          type: bearer
+          token: 6|9I0csJmKi685HLeQ8fXmPkJzygM89VuDOnnwMph8b0d337f6
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: freelancers
+    meta:
+      id: fld_f232504fb1b846498c063d68994565dd
+      created: 1776945812818
+      modified: 1776945812818
+      sortKey: -1776945812818
+      description: ""
+    children:
+      - url: http://127.0.0.1:8000/api/freelancerProfile
+        name: freelancers list
+        meta:
+          id: req_0d39175e2f2d478990cdba5a6646a1ca
+          created: 1776945862239
+          modified: 1776946277965
+          isPrivate: false
+          description: ""
+          sortKey: -1776945862239
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        authentication:
+          type: bearer
+          token: 6|9I0csJmKi685HLeQ8fXmPkJzygM89VuDOnnwMph8b0d337f6
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://127.0.0.1:8000/api/freelancerProfile?verified=1
+        name: Freelancers - Verified Only
+        meta:
+          id: req_70e459d2fa4a4725b1008dd8b00105d5
+          created: 1776946284078
+          modified: 1776946945657
+          isPrivate: false
+          description: ""
+          sortKey: -1776946284078
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        authentication:
+          type: bearer
+          token: 6|9I0csJmKi685HLeQ8fXmPkJzygM89VuDOnnwMph8b0d337f6
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://127.0.0.1:8000/api/freelancerProfile?available=available
+        name: Freelancers - Available Only
+        meta:
+          id: req_9010616cabd743de99a7d42c53805512
+          created: 1776946956929
+          modified: 1776947077946
+          isPrivate: false
+          description: ""
+          sortKey: -1776946956929
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        authentication:
+          type: bearer
+          token: 6|9I0csJmKi685HLeQ8fXmPkJzygM89VuDOnnwMph8b0d337f6
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://127.0.0.1:8000/api/freelancerProfile?top_rated=1
+        name: Freelancers - Top Rated
+        meta:
+          id: req_2be75cb3cf9f4c3caf670fa87cbe921f
+          created: 1776947161032
+          modified: 1776947216525
+          isPrivate: false
+          description: ""
+          sortKey: -1776947161032
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        authentication:
+          type: bearer
+          token: 5|NdkGWhblJayPF9OvQvtjL94zZFhsIOtLKiMxAj93db5b0b3e
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://127.0.0.1:8000/api/freelancerProfile/1
+        name: get freelancer by id=1
+        meta:
+          id: req_cf68ea50771943389429a44dc85e207b
+          created: 1776947307809
+          modified: 1776947501385
+          isPrivate: false
+          description: ""
+          sortKey: -1776947307809
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        authentication:
+          type: bearer
+          token: 6|9I0csJmKi685HLeQ8fXmPkJzygM89VuDOnnwMph8b0d337f6
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: offers
+    meta:
+      id: fld_ba8b0dfae631490d8b2e5bdf43b3c6e3
+      created: 1776947683156
+      modified: 1776947683156
+      sortKey: -1776947683156
+      description: ""
+    children:
+      - url: http://127.0.0.1:8000/api/projects/2/apply
+        name: Offer - Create New Proposal
+        meta:
+          id: req_565b4e4d96a64f428f8f3ce8fe1adced
+          created: 1776947687361
+          modified: 1776948902479
+          isPrivate: false
+          description: ""
+          sortKey: -1776947687361
+        method: POST
+        body:
+          mimeType: application/json
+          text: >-
+            {
+              "project_id": 1,
+              "freelancer_id": 4,
+              "proposed_price": 500,
+              "delivery_time": 7,
+              "cover_letter": "I have 3 years experience and I can complete this project with high quality.",
+              "status": "pending"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        authentication:
+          type: bearer
+          token: 3|UWht4SXQdI6N7ei7z93G5mRDM79Gqx99afFUL42V18fef038
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://127.0.0.1:8000/api/offers/1
+        name: Offer - Show Details
+        meta:
+          id: req_88c4aac920ef40e8b243912988b2d3da
+          created: 1776949375985
+          modified: 1776949480607
+          isPrivate: false
+          description: ""
+          sortKey: -1776949375985
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        authentication:
+          type: bearer
+          token: 3|UWht4SXQdI6N7ei7z93G5mRDM79Gqx99afFUL42V18fef038
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: freelancer Profile
+    meta:
+      id: fld_7e099a2d8deb4a70a7adc399b04430fe
+      created: 1776949896196
+      modified: 1776949896196
+      sortKey: -1776949896196
+      description: ""
+    children:
+      - url: http://127.0.0.1:8000/api/freelancerProfile/2
+        name: Freelancer Profile - Update
+        meta:
+          id: req_8d3b4de1ac584ee2a979ebf7ae3f21c6
+          created: 1776949901881
+          modified: 1776950477270
+          isPrivate: false
+          description: ""
+          sortKey: -1776949901881
+        method: PUT
+        body:
+          mimeType: application/json
+          text: >-
+            {
+            	"bio": "Experienced developer with 5+ years in Laravel and API development."
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        authentication:
+          type: bearer
+          token: 3|UWht4SXQdI6N7ei7z93G5mRDM79Gqx99afFUL42V18fef038
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://127.0.0.1:8000/api/freelancerProfile/2
+        name: Update Freelancer Profile (Skills & Experience)
+        meta:
+          id: req_f4723f7da25c4cf987b7ba8268ca5a4c
+          created: 1776950877226
+          modified: 1776951602652
+          isPrivate: false
+          description: ""
+          sortKey: -1776950877226
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "skills": [
+                {
+                  "skill_id": 1,
+                  "years_experience": 5
+                },
+                {
+                  "skill_id": 2,
+                  "years_experience": 1
+                }
+              ]
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        authentication:
+          type: bearer
+          token: 3|UWht4SXQdI6N7ei7z93G5mRDM79Gqx99afFUL42V18fef038
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: dashboard
+    meta:
+      id: fld_9c0b39f5cfb143f7b2b790b7931e754d
+      created: 1776951662433
+      modified: 1776951662433
+      sortKey: -1776951662433
+      description: ""
+    children:
+      - url: http://127.0.0.1:8000/api/dashboard/stats
+        name: dashboard details
+        meta:
+          id: req_b75d1c18d4ee4fdbb70d0afb9e5671f0
+          created: 1776951666566
+          modified: 1776951823392
+          isPrivate: false
+          description: ""
+          sortKey: -1776951666566
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        authentication:
+          type: bearer
+          token: 7|Q3mtdlisD4sEcfeecAqCRchQctKz88r9BVGcNOB649e2eec8
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_3dc90a1fec27266c3dedbb44a915b520115db025
+    created: 1776938715217
+    modified: 1776948777614
+  cookies:
+    - id: 3529402d-3e46-45a2-8bc3-ac292a3c7ac7
+      key: XSRF-TOKEN
+      value: eyJpdiI6InRJNXdKaFVkNlV2T1VUcE5YSDlTVkE9PSIsInZhbHVlIjoiV05WOURRcmJlSEp5L2xDejhzcVRSZ0dwVjdPRVRCUk9tQkJmTTAyM1ZtMG1sSXhHcnFCMEZ4Smk3Z09RVHVwdDZVeGdtTGx5MXc4Wk9vNDNyR2hpMDNQUHhiQlVEdWZtTzVjS25MNVU3ZHBKcVNFNFROSThtd3Z1NW5jTnFjckUiLCJtYWMiOiI1NzE1MzhhM2YyMTkyM2M5Y2MzZGVjOGNiN2JjMjdkNTcyOWUxOTEwM2VlY2U0ODRiN2NmNTBhYjEyM2MwMzZjIiwidGFnIjoiIn0%3D
+      domain: 127.0.0.1
+      path: /
+      secure: false
+      httpOnly: false
+      hostOnly: true
+    - id: d2982d86-232f-46ce-aa90-187236bbfe4c
+      key: laravel-session
+      value: eyJpdiI6IkJTTk1wQlNIckZpNzV2MGFvbGxXcFE9PSIsInZhbHVlIjoiVXVLRkF3SkdIcVZSWG1Qdmh5SkJLQ0NFZDIrc2grZkQ4UW9SSHNFZWZqaHNmRDZ2NjNBbUM1K1pMekh5cndwRDFNemxpZ1VNN2V2a3BOQWdqOVh2VmFobFBHVTB5SlZxUmdSK3ZZczdIam1sQXhQUyt1a0FENTQ3RS9rRy80d3kiLCJtYWMiOiJkOGEzMjg2ZWFlOTMxMDZkZjIxMzMwYjZkYTczODk2NTQ2NGMyZmM4MTg4ZTE3MjYzNWY3ZDU3OGNlZDhlOWYzIiwidGFnIjoiIn0%3D
+      domain: 127.0.0.1
+      path: /
+      secure: false
+      httpOnly: true
+      hostOnly: true
+environments:
+  name: Base Environment
+  meta:
+    id: env_3dc90a1fec27266c3dedbb44a915b520115db025
+    created: 1776938715209
+    modified: 1776938715209
+    isPrivate: false

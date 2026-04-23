@@ -39,13 +39,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
 });
 
 Route::middleware(['auth:sanctum', 'client.only'])->group(function () {
-    Route::apiResource('projects', ProjectController::class)
-        ->only(['store']);
-});
-
-Route::middleware('auth:sanctum')->group(function () {
-    Route::apiResource('projects', ProjectController::class)
-        ->only(['index', 'show']);
+    Route::apiResource('projects', ProjectController::class);
 });
 
 Route::middleware(['auth:sanctum', 'freelancer.only', 'freelancer.verified'])->group(function () {
