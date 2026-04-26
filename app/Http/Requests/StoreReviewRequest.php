@@ -23,8 +23,10 @@ class StoreReviewRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'project_id' => ['required', 'exists:projects,id'],
             'client_id' => 'required|exists:users,id',
             'freelancer_id' => 'required|exists:users,id',
+            'freelancer_profile_id' => ['required', 'exists:freelancer_profiles,id'],
             'rating' => 'required|numeric|min:1|max:5',
             'comment' => 'nullable|string',
         ];

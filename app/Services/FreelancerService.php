@@ -2,31 +2,41 @@
 namespace App\Services;
 use Illuminate\Support\Facades\DB;
 use App\Models\FreelancerProfile;
+use Illuminate\Support\Facades\Cache;
 
 class FreelancerService
 {
-    public function getAll($request)
+public function getAll($request)
 {
-    return FreelancerProfile::query()
-        ->with(['user:id,name,email', 'skills'])
+    $key = 'freelancers_' . md5(json_encode([
+        'verified' => $request->verified,
+        'available' => $request->available,
+        'top_rated' => $request->top_rated,
+        'page' => $request->page
+    ]));
 
-        ->withCount([
-            'offers as projects_count' => function ($q) {
-                $q->where('status', 'accepted');
-            },
-            'reviews'
-        ])
+    return Cache::remember($key, 10, function () use ($request) {
+        return FreelancerProfile::query()
+            ->with(['user:id,name,email', 'skills'])
 
-        ->withAvg('reviews', 'rating')
+            ->withCount([
+                'offers as projects_count' => function ($q) {
+                    $q->where('status', 'accepted');
+                },
+                'reviews'
+            ])
 
-        ->when($request->verified, fn($q) => $q->where('is_verified', true))
-        ->when($request->available, fn($q) => $q->where('availability', 'available'))
-        ->when($request->top_rated, fn($q) =>
-            $q->orderByDesc('reviews_avg_rating')
-        )
+            ->withAvg('reviews', 'rating')
 
-        ->latest()
-        ->paginate(10);
+            ->when($request->verified, fn($q) => $q->where('is_verified', true))
+            ->when($request->available, fn($q) => $q->where('availability', 'available'))
+            ->when($request->top_rated, fn($q) =>
+                $q->orderByDesc('reviews_avg_rating')
+            )
+
+            ->latest()
+            ->paginate(10);
+    });
 }
 
     public function getById($id)

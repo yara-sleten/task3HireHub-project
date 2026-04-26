@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Review extends Model
 {
     protected $fillable = [
-        'client_id','freelancer_id','rating','comment','freelancer_profile_id'
+       'project_id', 'client_id','freelancer_id','rating','comment','freelancer_profile_id'
     ];
 
     public function client()
