@@ -1,13 +1,20 @@
 <?php
 
 namespace App\Services;
-
+use Illuminate\Support\Facades\Cache;
 use App\Models\Project;
-
+use App\Jobs\SendProjectNotificationJob;
 class ProjectService
 {
     public function getAll($request)
-    {
+{
+    $key = 'open_projects_' . md5(json_encode([
+        'budget' => $request->budget,
+        'this_month' => $request->this_month,
+        'page' => $request->page
+    ]));
+
+    return Cache::remember($key, 10, function () use ($request) {
         return Project::with([
                 'client:id,name',
                 'tags:id,name'
@@ -19,7 +26,8 @@ class ProjectService
             ->when($request->this_month, fn($q) => $q->thisMonth())
             ->latest()
             ->paginate(10);
-    }
+    });
+}
 
     public function getById($id)
     {
@@ -55,7 +63,7 @@ public function isClosed($project): bool
     if (!empty($data['tags'])) {
         $project->tags()->sync($data['tags']);
     }
-
+    SendProjectNotificationJob::dispatch($project);
     return $project;
 }
 

@@ -1,8 +1,8 @@
 <?php
 namespace App\Services;
-
+use App\Jobs\RecalculateFreelancerRatingJob;
 use App\Models\Review;
-
+use App\Models\FreelancerProfile; 
 class ReviewService
 {
     public function getAll($request)
@@ -30,10 +30,17 @@ class ReviewService
             ->findOrFail($id);
     }
 
-    public function create($data)
-    {
-        return Review::create($data);
-    }
+  
+
+public function create($data)
+{
+    $review = Review::create($data);
+
+    $freelancerProfile = FreelancerProfile::find($data['freelancer_profile_id']);
+    RecalculateFreelancerRatingJob::dispatch($freelancerProfile);
+
+    return $review;
+}
 
     public function update($review, $data)
     {
